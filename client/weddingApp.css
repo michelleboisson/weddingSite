@@ -1,0 +1,409 @@
+/* CSS declarations go here */
+
+/* COLORS 
+
+green : #889D75
+dark blue : #476C72
+grey green : #9FAC9A
+orange : #d75837
+pink : #EA9085 
+
+*/
+
+@font-face {
+  font-family: Pablo;
+  src: url('/fonts/Pablo Skinny.ttf');
+}
+
+
+html {
+  /*width: 100%;
+  height: 100%;
+  overflow: hidden; */
+}
+
+body {
+  background: #f2f2f2;
+  color: #333;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-weight: lighter;
+  line-height: 1.5;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+.pablo {
+  font-family: Pablo, sans-serif;
+  font-size: 275%;
+}
+.title {
+  display: inline-block;
+  color: #FFF;
+  background-color: #EA9085;
+  font-style: italic;
+  padding-right: 0.5em;
+  padding-left: 0.2em;
+}
+#header{
+  width: 100%;
+  position: fixed;
+  background-color: #FFF;
+  z-index: 2000;
+  top: -90px;
+}
+#rsvpForm{
+  display:block;
+  background-color: #EA9085;
+  padding: 20px;
+}
+#rsvplink:hover {
+  cursor: hand;
+  cursor: pointer;
+}
+#closebtn {
+  position: absolute;
+  right: 200px;
+  top: 30px;
+  padding: 10px;
+}
+#rsvpForm h3{
+  margin-top: -8px;
+}
+#rsvpForm p{
+
+}
+.guestinquiry{
+  display: none;
+}
+#rsvpForm #answerme, #rsvpForm #answerplus1 {
+  display: inline-block;
+  margin-left: 10px;
+}
+#answerplus1 button.selected, #answerme button.selected{
+  background: #CCC;
+}
+
+
+table#adminpanel td{
+  padding:18px;
+}
+table#adminpanel tr{
+  border-bottom: #eee solid 1px;
+}
+table#adminpanel tr:first-child{
+  font-weight: bold;
+}
+#main-nav{
+	margin: 0 auto;
+	width: 1012px;
+  height: 65px;
+  margin-left: -506px;
+	text-align: center;
+	position: relative;
+	top: 0;
+  left: 50%;
+  z-index: 100;
+  background: inherit;
+}
+#main-nav h1{
+  font-family: "Pablo", Helvetica, sans-serif;
+  text-shadow: 0 1px 0 #ffffff;
+  color: #999;
+  font-size: 50px;
+}
+
+.navbar .nav > li {
+  line-height: 42px;
+}
+.navbar .nav > li:first-child {
+  line-height: 20px;
+}
+#main-nav h1 h2{
+  display: inline-block;
+  font-size: 40px;
+}
+.star1 {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  display: inline-block;
+  padding-right: 0;
+  padding-top: 15px;
+}
+.star2 {
+  -webkit-transform: rotate(-112deg);
+  -moz-transform: rotate(-112deg);
+  display: inline-block;
+  padding-left: 18px;
+}
+.panel{
+  max-width:900px;
+  margin:0 auto;
+}
+/*.panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow: auto; 
+  background: #FFF;
+}*/
+
+.nav{
+	width: 100%;
+	margin: 0 auto;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.inner {
+  position: relative;
+  top: 70px;
+  padding-bottom: 100px;
+  /*height: 100%;*/
+}
+#home .inner{
+/*  height: 59%;*/
+}
+.top{
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+#vimeoposition {
+  height:350px;
+  left:50%;
+  margin-left:-50%;
+  position: relative;
+  top:0;
+  width:100%;
+  z-index:0;  
+}
+
+.panel h1{
+  text-transform: uppercase;
+  text-align: center;
+  color: #333;
+  text-decoration: underline;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+
+
+/* panels */
+.inner .copy, .inner .main-text{
+  /*margin-left: 400px;*/
+}
+.inner .main-text{
+  /*max-width: 600px;*/
+}
+.home {
+  color: #889D75;
+/*  max-height: 400px; */
+  padding-top: 62px;
+  }
+
+
+/* ----- THE COUPLE ----- */
+.the-couple {
+
+ }
+ .the-couple #story{
+  clear: both;
+  width: 100%;
+ }
+
+.the-couple #story .biohalf:first-child{
+  text-align: right;
+}
+
+#pics img{
+  width : 50%;
+  position: relative;
+  padding-bottom: 20px;
+}
+#pics div:first-child img{
+  float: right;
+ }
+img#hearts{
+  width:  auto;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  top: 50px;
+}
+
+
+/* ----- BRIDES PEOPLE ----- */
+
+#parallelogram {
+   position: absolute;
+   left: -44px;
+   width: 106%; 
+   height: 700px;
+   background: #9FAC9A;
+   opacity: .4;
+   /* Skew */
+   -webkit-transform: skew(20deg); 
+   -moz-transform: skew(20deg); 
+   -o-transform: skew(20deg);
+   transform: skew(20deg);
+}
+
+  .brides-people {
+  /*color: #9FAC9A;*/
+  }
+
+  .people{
+    width: 100%;
+    clear: both;
+  }
+  .people img {
+    width: 125px;
+    display: block;
+  }
+  .people h2{
+    font-size: 20px;
+  }
+  .people h2, .people p{
+    display: block;
+    position: relative;
+  }
+  .people.left h2, .people.left p{
+    margin-left: 150px;
+   }
+  .people.left img{
+    float: left;
+  }
+  .people.right h2, .people.right p{
+    margin-right: 150px;
+    text-align: right;
+   }
+  .people.right img{
+    float: right;
+  }
+
+  /* -------- SNAPSHOTS ------ */
+
+  .snapshots {
+  color: #d75837;
+  }
+
+/* Prevents slides from flashing */
+    #slides {
+      display:none;
+    }
+#slideshow .slidesjs-previous {
+  margin-right: 5px;
+  float:left;
+}
+#slideshow .slidesjs-next {
+  margin-right: 5px;
+  float:left;
+}
+
+.slidesjs-pagination {
+    margin:6px 0 0;
+    float: right;
+    list-style: none;
+}
+
+.slidesjs-pagination li {
+    float: left;
+    margin: 0 1px;
+}
+
+.slidesjs-pagination li a {
+    display: block;
+    width: 13px;
+    height: 0;
+    padding-top: 13px;
+    background-image: url(/media/pagination.png);
+    background-position: 0 0;
+    float: left;
+    overflow: hidden;
+}
+
+.slidesjs-pagination li a.active, .slidesjs-pagination li a:hover.active { background-position: 0 -26px }
+
+.slidesjs-pagination li a:hover { background-position: 0 -13px }
+
+#slides a:link, #slides a:visited { color: #333 }
+
+#slides a:hover, #slides a:active { color: #9e2020 }
+
+
+
+
+.wedding-details {
+  margin-bottom: 200px;
+  text-align: center;
+} 
+.wedding-details .inner {
+  background-color: #e8f6f6;
+  box-shadow: 10px 10px 16px #999;
+}
+.wedding-details p{
+  padding-bottom: 25px;
+}
+
+.rsvp {
+  left: 500%;
+  color: #62726a; 
+}
+
+
+
+/* ------- MEIDA QUERIES ---------*/
+
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+  
+  .people.left img, .people.right img {
+    float: none;
+  }
+  .people.left h2, .people.left p {
+    margin-left: inherit;
+  }
+  .people.right h2, .people.right p {
+    margin-right: inherit;
+    text-align: left;
+  }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 720px) { 
+  #header {
+    display: none;
+  }
+  .home {padding-top: 0;}
+#parallelogram {
+    -webkit-transform: skew(0deg);
+    -moz-transform: skew(0deg);
+    -o-transform: skew(0deg);
+    transform: skew(0deg);
+  }
+}
+/* not mobile */
+@media (min-width: 680px) { 
+    .home p{ font-size: 70px;}
+   #guestBottom{
+    display: none;
+  }
+
+}
+@media (max-width:720px){
+  .the-couple #story .biohalf:first-child {
+    text-align: left;
+  }
+  .people.right h2, .people.right p {
+    margin-right: inherit;
+    text-align: left;
+  }
+
+}
+
+ 
