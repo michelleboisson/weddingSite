@@ -116,7 +116,7 @@ table#adminpanel tr:first-child{
   line-height: 42px;
 }
 .navbar .nav > li:first-child {
-  line-height: 20px;
+  line-height: 40px;
 }
 #main-nav h1 h2{
   display: inline-block;
