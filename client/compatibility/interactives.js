@@ -264,7 +264,7 @@ var adminAddNewGuest = function(obj){
 use in console to import users from launch rock CSV
 USE: uncomment the above, save, copy the stuff below and paste in console.---- 
 
-$.get( "/LaunchRock_Export_20140210_043602_UTC.csv")
+$.get( "/LaunchRock_Export_20140210_045857_UTC.csv")
   .done(function( data ) {
     var array = CSVToArray(data, ",",convertToSJSON);
     //console.log(array.length);

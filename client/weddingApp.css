@@ -386,6 +386,10 @@ img#hearts{
     -o-transform: skew(0deg);
     transform: skew(0deg);
   }
+  #adminpanel tr td:nth-child(3){
+    display: none;
+  }
+
 }
 /* not mobile */
 @media (min-width: 680px) { 
@@ -393,7 +397,7 @@ img#hearts{
    #guestBottom{
     display: none;
   }
-
+  
 }
 @media (max-width:720px){
   .the-couple #story .biohalf:first-child {

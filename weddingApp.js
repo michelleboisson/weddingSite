@@ -220,13 +220,6 @@ Template.guestCount.rsvps = function(){
 
   Template.addnewGuest.rendered = function(){
     console.log("add guest template rendered");
-     //timestampes moment
-     $(".timestamp").each(function(index, element ){
-      var time = parseFloat($(element).text());
-      //console.log(index+" "+time+" "+moment(time).fromNow());
-      $(element).text( moment(time).fromNow() );
-     })
-    
   }
   Template.addnewGuest.events({
     'click #saveNewGuestbtn' : addNewGuest,
@@ -246,11 +239,18 @@ Template.guestCount.rsvps = function(){
                       }});
           $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
       
-      $("a[data-id="+guestToEdit._id+"]").siblings(".timestamp").text(moment(parseFloat($(this).text())).fromNow());
+      //$("a[data-id="+guestToEdit._id+"]").siblings(".timestamp").text(moment(parseFloat($(this).text())).fromNow());
     }
   })
 
-
+  Template.guestList.rendered = function(){
+    //timestampes moment
+     $(".timestamp").each(function(index, element ){
+      var time = parseFloat($(element).text());
+      console.log(index+" "+time+" "+moment(time).fromNow());
+      $(element).text( moment(time).fromNow() );
+     })
+  }
   Template.guestList.events({
     'click #adminpanel td a.editGuestBTN' : function(event){
         var thisID = $(event.target).attr("data-id");
