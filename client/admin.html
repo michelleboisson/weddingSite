@@ -1,0 +1,27 @@
+<template name="admin">
+	{{> addnewGuest }}
+	{{> guestList }}
+
+</template>
+
+<template name="addnewGuest">
+  <p>Add a new guest:</p>
+<form class="form-inline" role="form" id="addnewguest">
+  <div class="form-group">
+    <input type="text" class="form-control" id="newGuestFirst" placeholder="Enter first name">
+    <input type="text" class="form-control" id="newGuestLast" placeholder="Enter last name">
+    <input type="email" class="form-control" id="newGuestEmail" placeholder="Enter email">
+    <input type="text" class="form-control" id="newGuestPlusOne" placeholder="Plus one first name">
+    <button id="saveNewGuestbtn" class="btn btn-default">Save</button>
+  </div>
+</form>
+</template>
+
+<template name="guestList">
+  <table id="adminpanel">
+    <tr><td>Updated</td><td>First Name</td><td>Plus One</td><td>Email</td><td>Coming?</td><td>Plus One Coming?</td><td></td></tr>
+  {{#each allguests}}
+    <tr><td class="timestamp">{{timestamp}}</td><td>{{firstname}}</td><td>{{plusone}}</td><td>{{email}}</td><td>{{answerme}}</td><td>{{answerplus1}}</td><td><a data-id={{_id}}>delete</a></td></tr>
+{{/each}}
+
+</template>

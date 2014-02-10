@@ -1,3 +1,4 @@
+<template name="layout">
 <head>
   <title>Anisah and Michelle 2014</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:700italic,400,700,300' rel='stylesheet' type='text/css'>
@@ -5,6 +6,17 @@
 </head>
 
 <body>
+{{yield}}
+</body>
+</template>
+<!--   *********** TEMPLATES BEGIN *********** -->
+
+<template name="home">
+
+
+
+
+
    {{> mainnav}}
 
 <div  id="skrollr-body" class="container-fluid">
@@ -61,53 +73,53 @@
 
       <div class="people left">
         <img src="media/christine-bio.png" width="125px" />
-        <h2>Christine Boisson</h2>
+        <h2>Christine </h2>
         <p>Christine is Michelle's younger sister. Only 2 years apart, they grew up as best friends. In fact, people used to ask if they were twins, which Michelle took as a compliment because Christine is so much cooler and outgoing. She reminds Michelle to loosen up.</p>
       </div>
       <div class="people right">
         <img src="media/mark-bio.png" width="125px" />
-        <h2>Mark Miley</h2>
+        <h2>Mark </h2>
         <p>Mark is Anisah’s oldest brother.  He’s also the father of Anisah and Michelle’s favorite (and only) nieces.  He is young at heart and a great father.  He reminds Anisah that being a good parent means having respect for your children.</p>
       </div>
       <div class="people left">
         <img src="media/olivia-bio.png" width="125px" />
-        <h2>Olivia Boisson</h2>
+        <h2>Olivia </h2>
         <p>Olivia is Michelle's youngest sister and is her example of how working hard can lead to dreams coming true. Between each other's busy schedules, it can be hard to catch up, but when they do Michelle is always impressed by what a beautiful, grown lady her little sister has become.</p>
       </div>
       <div class="people right">
         <img src="media/leniere-bio.png" width="125px" />
-        <h2>Leniere Miley</h2>
+        <h2>Leniere </h2>
         <p>Leniere is Anisah’s older brother.  He and Anisah would play dress up as children with nothing but a few sheets and household items. He reminds Anisah to be sassy and to not take herself so seriously.</p>
       </div>
       <div class="people left">
         <img src="media/natalie-bio.png" width="125px" />
-        <h2>Natalie Estrada</h2>
+        <h2>Natalie </h2>
         <p>Natalie and Michelle became friends while they both worked at the same company. Natalie knows how to work hard and play hard. The two of them could often be found on the dance floor, even if they are the only ones getting down, and even if there is no one else in the room.</p>
       </div>
        <div class="people right">
         <img src="media/kristina-bio.png" width="125px" />
-        <h2>Kristina Kelser</h2>
+        <h2>Kristina </h2>
         <p>Kristina and Anisah met in the 12th grade when they were both awarded full tuition scholarships through the Posse Foundation. They first bonded while surviving college in Indiana. Kristina reminds Anisah to appreciate beauty.</p>
       </div>
       <div class="people left">
         <img src="media/brenda-bio.png" width="125px" />
-        <h2>Brenda Mangru</h2>
+        <h2>Brenda </h2>
         <p>Brenda has been a sparkle in Michelle's life since they were undergrads at NYU. They bonded over chaining awkward jokes, White Castle drive-thru, and the reconstructed proto-Indo-European word "penkwe."</p>
       </div>
       <div class="people right">
         <img src="media/courtney-bio.png" width="125px" />
-        <h2>Courtney Nelson</h2>
+        <h2>Courtney </h2>
         <p>Courtney is one of Anisah’s oldest friends. They met in the 8th grade and wore matching outfits until the 11th grade in high school.  Courtney keeps it real, while keeping it funny. Courtney reminds Anisah of how to get things done while having fun.</p>
       </div>
 <div class="people left">
         <img src="media/zella-bio.png" width="125px" />
-        <h2>Zella Pirello</h2>
+        <h2>Zella </h2>
         <p>Zella and Michelle also became friends while they worked at the same company with Natalie. Both lovers of good music (new, old, obscure, and popular), they've checked out numerous concerts together as well as enjoyed fond memories involving "chicken cheer," and other shenanigans.</p>
       </div>
 
       <div class="people right">
         <img src="media/karen-bio.png" width="125px" />
-        <h2>Karen Reed</h2>
+        <h2>Karen </h2>
         <p>Karen and Anisah met in 2006 and bonded while at Jazz Fest in New Orleans.  They share a love of social work and all things outdoors.  Karen reminds Anisah of the importance of self care. </p>
       </div>
 
@@ -229,9 +241,11 @@ padding-bottom: 50px;">
 
 </div> <!-- end .container-fluid -->
 
-</body>
 
-<!--   *********** TEMPLATES BEGIN *********** -->
+
+</template>
+
+
 
 <template name="hello">
   <h1>Hello World!</h1>
@@ -264,27 +278,6 @@ padding-bottom: 50px;">
   
 </template>
 
-<template name="guestList">
-  <table id="adminpanel">
-    <tr><td>Updated</td><td>First Name</td><td>Plus One</td><td>Email</td><td>Coming?</td><td>Plus One Coming?</td><td></td></tr>
-  {{#each allguests}}
-    <tr><td class="timestamp">{{timestamp}}</td><td>{{firstname}}</td><td>{{plusone}}</td><td>{{email}}</td><td>{{answerme}}</td><td>{{answerplus1}}</td><td><a data-id={{_id}}>delete</a></td></tr>
-{{/each}}
-
-</template>
-
-<template name="addnewGuest">
-  <p>Add a new guest:</p>
-<form class="form-inline" role="form" id="addnewguest">
-  <div class="form-group">
-    <input type="text" class="form-control" id="newGuestFirst" placeholder="Enter first name">
-    <input type="text" class="form-control" id="newGuestLast" placeholder="Enter last name">
-    <input type="email" class="form-control" id="newGuestEmail" placeholder="Enter email">
-    <input type="text" class="form-control" id="newGuestPlusOne" placeholder="Plus one first name">
-    <button id="saveNewGuestbtn" class="btn btn-default">Save</button>
-  </div>
-</form>
-</template>
 
 
 <template name="guestLookUp">

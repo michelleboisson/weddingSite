@@ -98,8 +98,6 @@ $(window).load(function(){
 
 var letsGetRolling = function(){
 	console.log("ready to roll");
-	$('#rsvplink').on('click', RSVPanimation.toggleSlide);
-	$('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
 	Slideshow.init();
 	var s = skrollr.init({
     render: function(data) {
@@ -127,7 +125,7 @@ var letsGetRolling = function(){
 
 
 
-/* =========================================== 
+/* =========================================== */
 // This will parse a delimited string into an array of
     // arrays. The default delimiter is the comma, but this
     // can be overriden in the second argument.
@@ -257,12 +255,11 @@ var adminAddNewGuest = function(obj){
 
 
 
-*/
+
 
 
 /** use this in console to convert to Collection Documents 
-use in console to import users from launch rock CSV
-USE: uncomment the above, save, copy the stuff below and paste in console.---- 
+use in console to import users from launch rock CSV---- 
 
 $.get( "/LaunchRock_Export_20140209_230149_UTC.csv")
   .done(function( data ) {

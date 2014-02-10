@@ -1,0 +1,41 @@
+//// Routes
+
+Router.configure({
+  layoutTemplate: 'layout'
+});
+
+
+
+
+
+Router.map(function () {
+  /**
+   * The route's name is "home"
+   * The route's template is also "home"
+   * The default action will render the home template
+   */
+   this.route('home', {
+     path: '/',
+     template: 'home',
+     layoutTemplate: 'layout',
+     after: function(){
+      jQuery.getScript('/interactives.js', function(){
+        letsGetRolling();
+        $('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
+      });
+      
+     }
+   });
+
+  /**
+   * The route's name is "posts"
+   * The route's path is "/posts"
+   * The route's template is inferred to be "posts"
+   */
+   this.route('admin', {
+     path: '/admin',
+     layoutTemplate: 'layout'
+
+   });
+
+ });
