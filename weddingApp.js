@@ -1,6 +1,11 @@
-var Guests = new Meteor.Collection('guests');
+Guests = new Meteor.Collection('guests');
 
-var addNewGuest = function(event){
+
+
+
+if (Meteor.isClient) {
+
+addNewGuest = function(event){
   console.log("clicked!");
   event.preventDefault();
   event.stopImmediatePropagation();
@@ -21,7 +26,7 @@ var addNewGuest = function(event){
   return false;
 }
 
-var editGuest = function(guestID){
+editGuest = function(guestID){
   console.log(" to edit clicked!");
   //event.preventDefault();
   //event.stopImmediatePropagation();
@@ -37,11 +42,12 @@ var editGuest = function(guestID){
   $("#newGuestLast").val(guestToEdit.lastname);
   $("#newGuestEmail").val(guestToEdit.email);
   $("#newGuestPlusOne").val(guestToEdit.plusone);
+  $("#hiddenID").val(guestToEdit._id);
 
   //attach event listener for button to save this.
-  $("#saveNewGuestbtn").off('click');
+  //$("#saveNewGuestbtn").off('click');
 
-  $("#saveNewGuestbtn").on('click',function(event){
+/*  $("#saveEditGuestbtn").on('click',function(event){
     event.preventDefault();
     event.stopImmediatePropagation();
     console.log("saving "+guestToEdit.firstname);
@@ -55,19 +61,19 @@ var editGuest = function(guestID){
       $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
   });
   $("a[data-id="+guestToEdit._id+"]").siblings(".timestamp").text(moment(parseFloat($(this).text())).fromNow());
-/*  each(function(index, element ){
-      var time = parseFloat($(element).text());
+ // each(function(index, element ){
+   //   var time = parseFloat($(element).text());
       //console.log(index+" "+time+" "+moment(time).fromNow());
-      $(element).text( moment(time).fromNow() );
-     });
+     // $(element).text( moment(time).fromNow() );
+    // });
 */
   return false;
 }
 
 
 
-var currentguest = {};
-var guestLookUp = function(event){
+currentguest = {};
+guestLookUp = function(event){
 //event.stopImmediatePropagation();
     event.preventDefault();
   //check if there's a document
@@ -145,7 +151,7 @@ var guestLookUp = function(event){
     }
 } //end guestLookUp
 
-var saveThisRSVP = function(e){
+saveThisRSVP = function(e){
   e.stopImmediatePropagation();
    var thisguest = Guests.findOne({_id: Session.get("currentguest")._id});
    var currentguest = Session.get("currentguest");
@@ -199,14 +205,18 @@ var saveThisRSVP = function(e){
 
 }
 
-
-if (Meteor.isClient) {
   console.log("hi!");
 
   Template.guestList.allguests = function(){
     return Guests.find();
   }
   
+Template.guestCount.rsvps = function(){
+  var count = 0;
+  var rsvpcount = Guests.find({answerme: "1"}).count() + Guests.find({answermeplusone: "1"}).count();
+
+  return rsvpcount;
+}
 
   Template.addnewGuest.rendered = function(){
     console.log("add guest template rendered");
@@ -216,17 +226,40 @@ if (Meteor.isClient) {
       //console.log(index+" "+time+" "+moment(time).fromNow());
       $(element).text( moment(time).fromNow() );
      })
-     //click on save
-     $("#saveNewGuestbtn").on('click', addNewGuest);
-    //click on delete
-      $("#adminpanel td a.editGuestBTN").on('click', function(){
-        var thisID = $(this).attr("data-id");
+    
+  }
+  Template.addnewGuest.events({
+    'click #saveNewGuestbtn' : addNewGuest,
+    'click #saveEditGuestbtn' : function(event){
+      var thisID = $("#hiddenID").val();
+        console.log(thisID);
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var guestToEdit = Guests.findOne({_id: thisID});
+        console.log("saving "+guestToEdit.firstname);
+        Guests.update(guestToEdit._id, 
+                    {$set: {
+                        firstname: $("#newGuestFirst").val(), 
+                        lastname: $("#newGuestLast").val(), 
+                        email: $("#newGuestEmail").val(),
+                        plusone: $("#newGuestPlusOne").val(),
+                      }});
+          $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
+      
+      $("a[data-id="+guestToEdit._id+"]").siblings(".timestamp").text(moment(parseFloat($(this).text())).fromNow());
+    }
+  })
+
+
+  Template.guestList.events({
+    'click #adminpanel td a.editGuestBTN' : function(event){
+        var thisID = $(event.target).attr("data-id");
         console.log(thisID);
         editGuest(thisID);
 
-      });
-      $("#adminpanel td a.deleteGuestBTN").on('click', function(){
-        var thisID = $(this).attr("data-id");
+    },
+    'click #adminpanel td a.deleteGuestBTN' : function(event){
+        var thisID = $(event.target).attr("data-id");
         console.log(thisID);
         if (confirm('Are you sure you want to remove this guest?')) {
           Guests.remove(thisID);
@@ -234,10 +267,8 @@ if (Meteor.isClient) {
             // Do nothing!
         }
         
-      });
-
-  }
-  
+      }
+  })
   Template.mainnav.events({
     'click #rsvplink' : RSVPanimation.toggleSlide
   })

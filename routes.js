@@ -37,7 +37,12 @@ Router.map(function () {
      path: '/admin',
      layoutTemplate: 'layout',
      after: function(){
-        Template.addnewGuest.rendered();
+        //Template.addnewGuest.rendered();
+        $(".timestamp").each(function(index, element ){
+          var time = parseFloat($(element).text());
+          //console.log(index+" "+time+" "+moment(time).fromNow());
+          $(element).text( moment(time).fromNow() );
+         })
      }
 
    });

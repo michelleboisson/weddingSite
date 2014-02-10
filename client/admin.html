@@ -1,7 +1,14 @@
 <template name="admin">
+  {{> guestCount }}
 	{{> addnewGuest }}
 	{{> guestList }}
 
+</template>
+
+
+<template name="guestCount">
+  <h1>So far, {{rsvps}} people are coming.</h1>
+  <hr/>
 </template>
 
 <template name="addnewGuest">
@@ -12,7 +19,9 @@
     <input type="text" class="form-control" id="newGuestLast" placeholder="Enter last name">
     <input type="email" class="form-control" id="newGuestEmail" placeholder="Enter email">
     <input type="text" class="form-control" id="newGuestPlusOne" placeholder="Plus one first name">
-    <button id="saveNewGuestbtn" class="btn btn-default">Save</button>
+    <input type="hidden" id="hiddenID">
+    <button id="saveEditGuestbtn" class="btn btn-default">Save Edit</button>
+    <button id="saveNewGuestbtn" class="btn btn-default">Save New</button>
   </div>
 </form>
 </template>

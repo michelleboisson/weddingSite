@@ -16,7 +16,7 @@ $(function() {
 	});
 
 
-var Slideshow = {
+Slideshow = {
 	init: function(){
 		console.log("slideshow init");
 		//Scrolling.weddingDetails();
@@ -44,7 +44,7 @@ var Slideshow = {
 	}
 }
 
-var RSVPanimation = {
+RSVPanimation = {
 	slideup : function(){
 		$("#header").animate({top : "-="+ $("#rsvpForm").outerHeight() }, 500, function(){
 			//reset form
@@ -96,7 +96,7 @@ $(window).load(function(){
    //$("#parallelogram").css('height', $("#brides-people").height() + 100);
 });
 
-var letsGetRolling = function(){
+letsGetRolling = function(){
 	console.log("ready to roll");
 	$('#rsvplink').on('click', RSVPanimation.toggleSlide);
 	$('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
@@ -264,7 +264,7 @@ var adminAddNewGuest = function(obj){
 use in console to import users from launch rock CSV
 USE: uncomment the above, save, copy the stuff below and paste in console.---- 
 
-$.get( "/LaunchRock_Export_20140209_230149_UTC.csv")
+$.get( "/LaunchRock_Export_20140210_043602_UTC.csv")
   .done(function( data ) {
     var array = CSVToArray(data, ",",convertToSJSON);
     //console.log(array.length);
