@@ -1,4 +1,4 @@
-Guests = new Meteor.Collection('guests');
+var Guests = new Meteor.Collection('guests');
 
 var addNewGuest = function(event){
   console.log("clicked!");
@@ -204,7 +204,7 @@ if (Meteor.isClient) {
   console.log("hi!");
 
   Template.guestList.allguests = function(){
-  return Guests.find();
+    return Guests.find();
   }
   
 
