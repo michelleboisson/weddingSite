@@ -20,9 +20,7 @@ addNewGuest = function(event){
   })
   console.log(Guests);
   $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
-  Meteor.render(function() {
-        return Template.guestList(Template.guestList.allguests);
-    })
+  
   return false;
 }
 
@@ -207,13 +205,11 @@ saveThisRSVP = function(e){
 
   console.log("hi!");
 
-  Template.guestList.allguests = function(){
-    return Guests.find();
-  }
+ 
   
 Template.guestCount.rsvps = function(){
   var count = 0;
-  var rsvpcount = Guests.find({answerme: "1"}).count() + Guests.find({answermeplusone: "1"}).count();
+  var rsvpcount = Guests.find({answerme: "1"}).count() + Guests.find({answerplus1: "1"}).count();
 
   return rsvpcount;
 }
@@ -243,14 +239,20 @@ Template.guestCount.rsvps = function(){
     }
   })
 
+
+ Template.guestList.allguests = function(){
+    return Guests.find({}, {sort: {timestamp: -1}});
+  }
   Template.guestList.rendered = function(){
+    console.log("guestlist rendered");
     //timestampes moment
      $(".timestamp").each(function(index, element ){
-      var time = parseFloat($(element).text());
-      console.log(index+" "+time+" "+moment(time).fromNow());
+      var time = parseFloat($(element).attr("data-time"));
+      //console.log(index+" "+time+" "+moment(time).fromNow());
       $(element).text( moment(time).fromNow() );
      })
-  }
+  };
+
   Template.guestList.events({
     'click #adminpanel td a.editGuestBTN' : function(event){
         var thisID = $(event.target).attr("data-id");
@@ -317,23 +319,6 @@ if (Meteor.isServer) {
 //end .isServer
 
 
-var openAdminPanel = function(){
-  console.log("opening admin panel");
-  // update text on page
-  //$("#guestinquiry").html(response);
-  
-    Template.guestList.allguests = function(){
-        return Guests.find();
-    };
 
-    $(".guestinquiry").append(Meteor.render(function() {
-        return Template.addnewGuest();
-    }));
-    $(".guestinquiry").append(Meteor.render(function() {
-      return Template.guestList(Template.guestList.allguests);
-    }));
-
-
-}
 
 
