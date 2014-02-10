@@ -22,7 +22,7 @@ var addNewGuest = function(event){
 }
 
 var editGuest = function(guestID){
-  //console.log(" to edit clicked!");
+  console.log(" to edit clicked!");
   //event.preventDefault();
   //event.stopImmediatePropagation();
 
@@ -32,6 +32,7 @@ var editGuest = function(guestID){
   
   //populate data in fields
   window.scrollTo(0, 0); //scroll to top
+
   $("#newGuestFirst").val(guestToEdit.firstname);
   $("#newGuestLast").val(guestToEdit.lastname);
   $("#newGuestEmail").val(guestToEdit.email);
@@ -39,6 +40,7 @@ var editGuest = function(guestID){
 
   //attach event listener for button to save this.
   $("#saveNewGuestbtn").off('click');
+
   $("#saveNewGuestbtn").on('click',function(event){
     event.preventDefault();
     event.stopImmediatePropagation();
@@ -50,26 +52,14 @@ var editGuest = function(guestID){
                     email: $("#newGuestEmail").val(),
                     plusone: $("#newGuestPlusOne").val(),
                   }});
+      $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
   });
-  $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
-
-  
-
-  /*
-  Guests.insert({
-    timestamp: new Date().getTime(),
-    firstname: $("#newGuestFirst").val(), 
-    lastname: $("#newGuestLast").val(), 
-    email: $("#newGuestEmail").val(),
-    plusone: $("#newGuestPlusOne").val(),
-    answerme: 0,
-    answerplus1: 0
-  })
-  console.log(Guests);
-  $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
-  Meteor.render(function() {
-        return Template.guestList(Template.guestList.allguests);
-    })
+  $("a[data-id="+guestToEdit._id+"]").siblings(".timestamp").text(moment(parseFloat($(this).text())).fromNow());
+/*  each(function(index, element ){
+      var time = parseFloat($(element).text());
+      //console.log(index+" "+time+" "+moment(time).fromNow());
+      $(element).text( moment(time).fromNow() );
+     });
 */
   return false;
 }
