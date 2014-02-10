@@ -22,6 +22,7 @@ Router.map(function () {
       jQuery.getScript('/interactives.js', function(){
         letsGetRolling();
         $('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
+        $('.editGuestBTN').on('click', editGuest);
       });
       
      }
@@ -34,7 +35,10 @@ Router.map(function () {
    */
    this.route('admin', {
      path: '/admin',
-     layoutTemplate: 'layout'
+     layoutTemplate: 'layout',
+     after: function(){
+        Template.addnewGuest.rendered();
+     }
 
    });
 

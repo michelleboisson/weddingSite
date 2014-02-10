@@ -21,7 +21,9 @@
   <table id="adminpanel">
     <tr><td>Updated</td><td>First Name</td><td>Plus One</td><td>Email</td><td>Coming?</td><td>Plus One Coming?</td><td></td></tr>
   {{#each allguests}}
-    <tr><td class="timestamp">{{timestamp}}</td><td>{{firstname}}</td><td>{{plusone}}</td><td>{{email}}</td><td>{{answerme}}</td><td>{{answerplus1}}</td><td><a data-id={{_id}}>delete</a></td></tr>
+    <tr><td class="timestamp">{{timestamp}}</td><td>{{firstname}}</td><td>{{plusone}}</td><td>{{email}}</td><td>{{answerme}}</td><td>{{answerplus1}}</td><td><a data-id={{_id}} class="editGuestBTN">edit</a></td>
+      <td><a data-id={{_id}} class="deleteGuestBTN">delete</a></td>
+    </tr>
 {{/each}}
 
 </template>

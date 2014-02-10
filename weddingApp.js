@@ -21,6 +21,60 @@ var addNewGuest = function(event){
   return false;
 }
 
+var editGuest = function(guestID){
+  //console.log(" to edit clicked!");
+  //event.preventDefault();
+  //event.stopImmediatePropagation();
+
+  //look up guest in question
+  //console.log("hi "+ $(this))
+  var guestToEdit = Guests.findOne({_id: guestID});
+  
+  //populate data in fields
+  window.scrollTo(0, 0); //scroll to top
+  $("#newGuestFirst").val(guestToEdit.firstname);
+  $("#newGuestLast").val(guestToEdit.lastname);
+  $("#newGuestEmail").val(guestToEdit.email);
+  $("#newGuestPlusOne").val(guestToEdit.plusone);
+
+  //attach event listener for button to save this.
+  $("#saveNewGuestbtn").off('click');
+  $("#saveNewGuestbtn").on('click',function(event){
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    console.log("saving "+guestToEdit.firstname);
+    Guests.update(guestToEdit._id, 
+                {$set: {
+                    firstname: $("#newGuestFirst").val(), 
+                    lastname: $("#newGuestLast").val(), 
+                    email: $("#newGuestEmail").val(),
+                    plusone: $("#newGuestPlusOne").val(),
+                  }});
+  });
+  $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
+
+  
+
+  /*
+  Guests.insert({
+    timestamp: new Date().getTime(),
+    firstname: $("#newGuestFirst").val(), 
+    lastname: $("#newGuestLast").val(), 
+    email: $("#newGuestEmail").val(),
+    plusone: $("#newGuestPlusOne").val(),
+    answerme: 0,
+    answerplus1: 0
+  })
+  console.log(Guests);
+  $("#newGuestFirst").add("#newGuestLast").add("#newGuestEmail").add("#newGuestPlusOne").val("");
+  Meteor.render(function() {
+        return Template.guestList(Template.guestList.allguests);
+    })
+*/
+  return false;
+}
+
+
 
 var currentguest = {};
 var guestLookUp = function(event){
@@ -156,30 +210,41 @@ var saveThisRSVP = function(e){
 }
 
 
-
 if (Meteor.isClient) {
   console.log("hi!");
 
   Template.guestList.allguests = function(){
   return Guests.find();
   }
-  //$("#saveNewGuestbtn").on("click",addNewGuest);
+  
+
   Template.addnewGuest.rendered = function(){
     console.log("add guest template rendered");
      //timestampes moment
      $(".timestamp").each(function(index, element ){
       var time = parseFloat($(element).text());
-      console.log(index+" "+time+" "+moment(time).fromNow());
+      //console.log(index+" "+time+" "+moment(time).fromNow());
       $(element).text( moment(time).fromNow() );
      })
      //click on save
      $("#saveNewGuestbtn").on('click', addNewGuest);
     //click on delete
-      $("#adminpanel td a[data-id]").on('click', function(){
+      $("#adminpanel td a.editGuestBTN").on('click', function(){
         var thisID = $(this).attr("data-id");
+        console.log(thisID);
+        editGuest(thisID);
 
       });
-      
+      $("#adminpanel td a.deleteGuestBTN").on('click', function(){
+        var thisID = $(this).attr("data-id");
+        console.log(thisID);
+        if (confirm('Are you sure you want to remove this guest?')) {
+          Guests.remove(thisID);
+        } else {
+            // Do nothing!
+        }
+        
+      });
 
   }
   
@@ -189,14 +254,7 @@ if (Meteor.isClient) {
 
   Template.guestLookUp.events({
     'click #lookupguestbtn' : function(e) {
-        //if admin 
-        if ($("#lookupemail").val() == "admin"){
-          openAdminPanel();
-        }
-        else {
-          //else, regular look up
           guestLookUp(e);
-        }
     },
     'click #closebtn' : RSVPanimation.slideup,
     'click #saveRSVP' : saveThisRSVP,
