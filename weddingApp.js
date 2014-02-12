@@ -209,7 +209,7 @@ saveThisRSVP = function(e){
   
 Template.guestCount.rsvps = function(){
   var count = 0;
-  var rsvpcount = Guests.find({answerme: "1"}).count() + Guests.find({answerplus1: "1"}).count();
+  var rsvpcount = Guests.find({answerme: "1"}).count() + Guests.find({answerplus1: "1"}).count() +" / "+ (Guests.find({}).count() + Guests.find({plusone: {$ne:""}}).count());
 
   return rsvpcount;
 }
