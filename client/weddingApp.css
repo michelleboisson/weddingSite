@@ -386,7 +386,7 @@ img#hearts{
     -o-transform: skew(0deg);
     transform: skew(0deg);
   }
-  #adminpanel tr td:nth-child(3){
+  .nomobile{
     display: none;
   }
 

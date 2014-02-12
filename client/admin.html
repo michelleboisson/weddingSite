@@ -1,8 +1,9 @@
 <template name="admin">
+  <div class="container-fluid">
   {{> guestCount }}
 	{{> addnewGuest }}
 	{{> guestList }}
-
+  </div>
 </template>
 
 
@@ -28,9 +29,23 @@
 
 <template name="guestList">
   <table id="adminpanel">
-    <tr><td>Updated</td><td>First Name</td><td>Plus One</td><td>Email</td><td>Coming?</td><td>Plus One Coming?</td><td></td></tr>
+    <tr><td>Updated</td>
+      <td>First Name</td>
+      <td>Plus One</td>
+      <td class="nomobile">Email</td>
+      <td class="nomobile">Coming?</td>
+      <td class="nomobile">Plus One Coming?</td>
+      <td>Edit</td>
+      <td>Delete</td>
+    </tr>
   {{#each allguests}}
-    <tr><td class="timestamp" data-time={{timestamp}}></td><td>{{firstname}}</td><td>{{plusone}}</td><td>{{email}}</td><td>{{answerme}}</td><td>{{answerplus1}}</td><td><a data-id={{_id}} class="editGuestBTN">edit</a></td>
+    <tr><td class="timestamp" data-time={{timestamp}}></td>
+      <td>{{firstname}}</td>
+      <td>{{plusone}}</td>
+      <td class="nomobile">{{email}}</td>
+      <td class="nomobile">{{answerme}}</td>
+      <td class="nomobile">{{answerplus1}}</td>
+      <td><a data-id={{_id}} class="editGuestBTN">edit</a></td>
       <td><a data-id={{_id}} class="deleteGuestBTN">delete</a></td>
     </tr>
 {{/each}}
