@@ -47,4 +47,18 @@ Router.map(function () {
 
    });
 
+ this.route('gifts', {
+     path: '/gifts',
+     template: 'gifts',
+     layoutTemplate: 'layout',
+     after: function(){
+      jQuery.getScript('/interactives.js', function(){
+        letsGetRolling();
+        $('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
+        $('.editGuestBTN').on('click', editGuest);
+      });
+      
+     }
+   });
+
  });
