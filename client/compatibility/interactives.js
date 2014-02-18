@@ -46,43 +46,43 @@ Slideshow = {
 
 RSVPanimation = {
 	slideup : function(){
+    console.log("sliding up now");
 		$("#header").animate({top : "-="+ $("#rsvpForm").outerHeight() }, 500, function(){
-			//reset form
-			var newHTML = " <form class='form-inline' role='form'> \
+//      $("#header").animate({top : "-=110px" }, 500, function(){
+			   //reset form
+			   var newHTML = " <form class='form-inline' role='form'> \
      				<div class='form-group' class='guestinquiry'> \
+            <h1>RSVP</h1> \
     <input type='email' class='form-control' id='lookupemail' placeholder='Enter your email'> \
     <button id='lookupguestbtn' class='btn btn-default'>Look up</button> \
   </div> \
 </form> \
-<div id='closebtn'>X</div>";
+<div id='closebtn' class='close'>&times;</div>";
 
 			$("#rsvpForm").attr("status", "closed");
 			$("#rsvpForm").html(newHTML);
-			$("#closebtn").on('click', RSVPanimation.slideup);
-			$("#header").animate({top : '-90px'});
-			 $("#lookupguestbtn").on('click', function(e) {
-		        //if admin 
-		        if ($("#lookupemail").val() == "admin"){
-		          openAdminPanel();
-		        }
-		        else {
-		          //else, regular look up
-		          guestLookUp(e);
-		        }
-		    }
-		);
+			$("#closebtn").on('click', RSVPanimation.toggleSlide);
+			$("#header").animate({top : - $("#rsvpForm").outerHeight()});
+    	$("#lookupguestbtn").on('click', function(e) {
+	       //else, regular look up
+	        guestLookUp(e);
+	       });
 	});
 	},
 	slidedown : function(){
+    console.log("slide down");
 		$("#rsvpForm").attr("status", "open");
 		$("#header").animate({top : 0}, 500);
-		$(".guestinquiry").slideDown();
+		//$(".guestinquiry").slideDown();
 	},
 	toggleSlide : function(){
-		if ($("#rsvpForm").attr("status") == "open")
+    console.log("toggle slide");
+		if ($("#rsvpForm").attr("status") == "open"){
 			RSVPanimation.slideup();
-		else
+    }
+		else{
 			RSVPanimation.slidedown();
+    }
 	}
 }
 
@@ -98,7 +98,7 @@ $(window).load(function(){
 
 letsGetRolling = function(){
 	console.log("ready to roll");
-	$('#rsvplink').on('click', RSVPanimation.toggleSlide);
+	//$('#rsvplink').on('click', RSVPanimation.toggleSlide);
 	$('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
 	Slideshow.init();
 	var s = skrollr.init({
@@ -113,7 +113,7 @@ letsGetRolling = function(){
 	 }
 	
 	//positioning
-	$("#rsvpForm").css('padding-left', $(".nav li a:first-child").offset().left + 30 +'px');
+	
 	//////$("#parallelogram").css('top', $("#brides-people").offset().top);
 	$("#parallelogram").css('height', $("#brides-people").height() + 100);
 

@@ -1,8 +1,6 @@
 Guests = new Meteor.Collection('guests');
 
 
-
-
 if (Meteor.isClient) {
 
 addNewGuest = function(event){
@@ -190,8 +188,12 @@ saveThisRSVP = function(e){
       console.log("true 2");
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "0" && currentguest.plusone != ""){
+    if(currentguest.plusone == "plus one")
+      var response = "We're glad you can make it! See you on April 26!"; 
+    else 
       var response = "We'll miss "+ thisguest.plusone +", but we're glad you can make it!";
-      console.log("true 3");
+    
+    console.log("true 3");
   }
   if (currentguest.answerme == "0" && currentguest.answerplus1 == "0"){
     console.log("true 4");
@@ -274,12 +276,17 @@ Template.guestCount.rsvps = function(){
   Template.mainnav.events({
     'click #rsvplink' : RSVPanimation.toggleSlide
   })
-
+  Template.guestLookUp.rendered = function(){
+    console.log("rsvp template rendered");
+    $("#rsvpForm").css('padding-left', $("#main-nav").offset().left  +'px');
+    //$("#rsvpForm form").css("position", "relative");
+    //$("#rsvpForm form").css("left", $("#main-nav").offset().left);
+  }
   Template.guestLookUp.events({
     'click #lookupguestbtn' : function(e) {
           guestLookUp(e);
     },
-    'click #closebtn' : RSVPanimation.slideup,
+    'click #closebtn' : RSVPanimation.toggleSlide,
     'click #saveRSVP' : saveThisRSVP,
     'click #answerme button[value=no]' : function () {
         $("#answerme button[value=no]").addClass("selected");
