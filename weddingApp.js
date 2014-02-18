@@ -207,7 +207,9 @@ saveThisRSVP = function(e){
 
   console.log("hi!");
 
- 
+Template.home.rendered = function(){
+  letsGetRolling();
+ }
   
 Template.guestCount.rsvps = function(){
   var count = 0;
