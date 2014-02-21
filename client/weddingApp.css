@@ -191,7 +191,12 @@ table#adminpanel tr:first-child{
   font-size: 20px;
 }
 
-
+#credits{
+  text-align:center; 
+  padding-bottom: 50px; 
+  width: 50%; 
+  margin: 0 auto;
+}
 
 /* panels */
 .inner .copy, .inner .main-text{
@@ -395,6 +400,9 @@ img#hearts{
   }
   .nomobile{
     display: none;
+  }
+  #credits{
+    width: 90%;
   }
 
 }
