@@ -218,23 +218,30 @@ padding-bottom: 50px;">
         <p>
         A celebration with dinner, drinks, and merriment to follow<br/>
         </p>
-<p>Bring your dancing shoes<br/>
+<p>Bring your dancing shoes.<br/>
         Leave those stilettos at home. Limited seating.</p>
-      <p><input id="RSVPbtn" type="button" value="RSVP" />
-    <a href="/gifts" target="new"><input id="giftsbtn" type="button" value="Gifts" /></a></p>
+      <p><input id="RSVPbtn" type="button" value="RSVP" class="btn btn-default"/>
+    <a href="/gifts" target="new"><input id="giftsbtn" type="button" value="Gifts" class="btn btn-default"/></a></p>
 
-<div id="guestBottom">      {{> guestLookUp}} </div>
+    <div id="guestBottom">      {{> guestLookUp}} </div>
 
       </div>
     </div>
   </div>
 </div><!-- end .wedding-details -->
 
+
+
+
+
+<div id="credits">
 <p style="text-align:center; padding-bottom: 50px;">Questions, comments, say hi at <a href="mailto:anisahandmichelle@gmail.com">anisahandmichelle@gmail.com</a></p>
 
-<p id="credits"><strong>Thank Yous.</strong>
+<p><strong>Thank Yous.</strong>
 <a href="http://rouxpz.com/" target=new>Roopa Vasudevan</a> &amp; <a href="http://sarahmak.es/" target=new>Sarah Hallacher</a>, save the date video. <a href="http://hyeyoungyoon.com/" target=new>Hyeyoung Yoon</a>, website design and logo. <a href="http://www.twitter.com/kurlsNkreole" target=new>Fabienne Valerie Roc</a>, catering and bartending coordination. <a href="http://www.etsy.com/shop/brooklynsouldesigns" target=new>Anjanette Randolph</a>, decor and jewelry. LaToya Jordan, decor. Cindy, event production. <a href="http://joescarano.com/" target=new>Joe Scarano</a>, illustration. DJ Dras (Rich Porras), DJ and audio.
 </p>
+</div>
+
 
 </div> <!-- end .container-fluid -->
 
@@ -261,7 +268,12 @@ padding-bottom: 50px;">
 <template name="guestLookUp">
   <form class="form-inline" role="form">
   <div class="form-group guestinquiry" ><h1>RSVP</h1>
-    <input type="email" class="form-control" id="lookupemail" placeholder="Enter your email">
+    
+    
+     <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span>
+      <input type="email" class="form-control" id="lookupemail" placeholder="Enter your email">
+    </div>
     <button id="lookupguestbtn" class="btn btn-default">Look up</button>
   </div>
 </form>

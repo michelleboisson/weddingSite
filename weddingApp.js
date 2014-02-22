@@ -74,8 +74,8 @@ guestLookUp = function(event){
     event.preventDefault();
   //check if there's a document
   console.log($(event.target).siblings());
-  console.log($(event.target).siblings().val());
-  var textInField = $(event.target).siblings("input").val();
+  //console.log($(event.target).siblings().val());
+  var textInField = $(event.target).siblings(".input-prepend").find("input").val();
 
   if(Guests.findOne({email: textInField}) == undefined){
     event.preventDefault();
@@ -243,6 +243,9 @@ Template.guestCount.rsvps = function(){
     }
   })
 
+Template.guestEmails.allemails = function(){
+  return Guests.find({});
+}
 
  Template.guestList.allguests = function(){
     return Guests.find({}, {sort: {timestamp: -1}});

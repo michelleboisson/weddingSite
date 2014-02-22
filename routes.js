@@ -61,4 +61,9 @@ Router.map(function () {
      }
    });
 
+ this.route('email', {
+     path: '/email',
+     template: 'email',
+   });
+
  });

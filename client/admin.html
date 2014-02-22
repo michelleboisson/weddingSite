@@ -3,6 +3,9 @@
   {{> guestCount }}
 	{{> addnewGuest }}
 	{{> guestList }}
+
+  <h1>All Emails</h1>
+  {{> guestEmails }}
   </div>
 </template>
 
@@ -50,4 +53,13 @@
     </tr>
 {{/each}}
 
+</template>
+
+
+<template name="guestEmails">
+<p>
+{{#each allemails}}
+  {{email}}; 
+{{/each}}
+</p>
 </template>

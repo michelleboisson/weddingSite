@@ -5,8 +5,9 @@
 green : #889D75
 dark blue : #476C72
 grey green : #9FAC9A
-orange : #d75837
-pink : #EA9085 
+orange : #dc6246
+pink : #EA9085
+ed9a92 
 
 */
 
@@ -31,7 +32,9 @@ body {
   font-size: 15px;
   overflow-x: hidden;
 }
-
+a {
+  color: #476C72;
+}
 .pablo {
   font-family: Pablo, sans-serif;
   font-size: 275%;
@@ -39,7 +42,7 @@ body {
 .title {
   display: inline-block;
   color: #FFF;
-  background-color: #EA9085;
+  background-color: #ed9a92;
   font-style: italic;
   padding-right: 0.5em;
   padding-left: 0.2em;
@@ -53,7 +56,7 @@ body {
 }
 #rsvpForm{
   display:block;
-  background-color: #EA9085;
+  background-color: #50777C;
   padding: 20px;
 }
 #rsvplink:hover {
@@ -196,6 +199,9 @@ table#adminpanel tr:first-child{
   padding-bottom: 50px; 
   width: 50%; 
   margin: 0 auto;
+}
+#credits a {
+  font-weight: 500;
 }
 
 /* panels */
@@ -349,7 +355,7 @@ img#hearts{
   text-align: center;
 } 
 .wedding-details .inner {
-  background-color: #e8f6f6;
+  background-color: #ed9a92;
   box-shadow: 10px 10px 16px #999;
 }
 .wedding-details p{
@@ -360,13 +366,28 @@ img#hearts{
   left: 500%;
   color: #62726a; 
 }
-
-#giftsIntro{
+#giftsPage{
   position: relative;
-  top: 200px;
-  width: 400px;
-  margin: 0 auto;
+  top: 150px;
 }
+#giftsIntro{
+  width: 400px;
+  line-height: 31px;
+  padding-bottom: 30px;
+}
+#giftsIntro p{
+  padding-bottom: 10px;
+}
+
+
+.btn-default{color:#333;background-color:#eee;border-color:transparent}
+.btn-default:hover,.btn-default:focus,.btn-default:active,.btn-default.active,.open .dropdown-toggle.btn-default{color:#333;background-color:#e8e8e8;border-color:rgba(0,0,0,0)}
+.btn-default:active,.btn-default.active,.open .dropdown-toggle.btn-default{background-image:none}
+.btn-default.disabled,.btn-default[disabled],fieldset[disabled] .btn-default,.btn-default.disabled:hover,.btn-default[disabled]:hover,fieldset[disabled] .btn-default:hover,.btn-default.disabled:focus,.btn-default[disabled]:focus,fieldset[disabled] .btn-default:focus,.btn-default.disabled:active,.btn-default[disabled]:active,fieldset[disabled] .btn-default:active,.btn-default.disabled.active,.btn-default[disabled].active,fieldset[disabled] .btn-default.active{background-color:#4e5d6c;border-color:transparent}
+.btn-default .badge{color:#4e5d6c;background-color:#ffffff}
+
+
+
 
 /* ------- MEIDA QUERIES ---------*/
 
