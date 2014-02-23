@@ -56,8 +56,9 @@ a {
 }
 #rsvpForm{
   display:block;
-  background-color: #50777C;
+  background-color: #31556b;
   padding: 20px;
+  color: #CCC;
 }
 #rsvplink:hover {
   cursor: hand;
@@ -83,7 +84,7 @@ a {
   margin-left: 10px;
 }
 #answerplus1 button.selected, #answerme button.selected{
-  background: #CCC;
+  background: #ed9a92;
 }
 
 table#adminpanel td{
@@ -380,7 +381,7 @@ img#hearts{
 }
 
 
-.btn-default{color:#333;background-color:#eee;border-color:transparent}
+.btn-default{color:#333;background-color:#eee;border-color:transparent; text-shadow: none;}
 .btn-default:hover,.btn-default:focus,.btn-default:active,.btn-default.active,.open .dropdown-toggle.btn-default{color:#333;background-color:#e8e8e8;border-color:rgba(0,0,0,0)}
 .btn-default:active,.btn-default.active,.open .dropdown-toggle.btn-default{background-image:none}
 .btn-default.disabled,.btn-default[disabled],fieldset[disabled] .btn-default,.btn-default.disabled:hover,.btn-default[disabled]:hover,fieldset[disabled] .btn-default:hover,.btn-default.disabled:focus,.btn-default[disabled]:focus,fieldset[disabled] .btn-default:focus,.btn-default.disabled:active,.btn-default[disabled]:active,fieldset[disabled] .btn-default:active,.btn-default.disabled.active,.btn-default[disabled].active,fieldset[disabled] .btn-default.active{background-color:#4e5d6c;border-color:transparent}
