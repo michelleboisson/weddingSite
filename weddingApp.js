@@ -203,7 +203,16 @@ saveThisRSVP = function(e){
   $(".guestinquiry").html(response);
   $(".guestinquiry").css("text-align","center");
 
-}
+  //send email
+  console.log("sending email");
+  Meteor.call('sendEmail',
+            'michelle.boisson@gmail.com',
+            'anisahandmichelle@gmail.com',
+            'Hello from Meteor!',
+            'This is a test of Email.send.');
+
+
+}//end SaveThisRSVP
 
   console.log("hi!");
 
@@ -326,6 +335,23 @@ Template.guestEmails.allemails = function(){
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+    Meteor.methods({
+      sendEmail: function (to, from, subject, text) {
+        check([to, from, subject, text], [String]);
+
+        // Let other method calls from the same client start running,
+        // without waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+          to: to,
+          from: from,
+          subject: subject,
+          text: text
+        });
+      }
+    });
+
   });
 }
 //end .isServer
