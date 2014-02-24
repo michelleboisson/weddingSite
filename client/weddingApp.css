@@ -33,19 +33,14 @@ body {
   overflow-x: hidden;
 }
 a {
-  color: #476C72;
+  color: #31556b;
 }
 .pablo {
   font-family: Pablo, sans-serif;
   font-size: 275%;
 }
 .title {
-  display: inline-block;
-  color: #FFF;
-  background-color: #ed9a92;
-  font-style: italic;
-  padding-right: 0.5em;
-  padding-left: 0.2em;
+  
 }
 #header{
   width: 100%;
@@ -302,7 +297,7 @@ img#hearts{
 
 .snapshots {
   color: #d75837;
-  padding-top: 100px;
+  padding: 100px 0;
 }
 
 /* Prevents slides from flashing */
@@ -358,9 +353,13 @@ img#hearts{
 .wedding-details .inner {
   background-color: #ed9a92;
   box-shadow: 10px 10px 16px #999;
+  padding-bottom:0;
 }
 .wedding-details p{
   padding-bottom: 25px;
+  width: 75%;
+  margin: 0 auto;
+  font-size: 19px;
 }
 
 .rsvp {
@@ -419,6 +418,10 @@ img#hearts{
     -moz-transform: skew(0deg);
     -o-transform: skew(0deg);
     transform: skew(0deg);
+    width:125%;
+  }
+  .people{
+    width: 90%;
   }
   .nomobile{
     display: none;
@@ -426,15 +429,21 @@ img#hearts{
   #credits{
     width: 90%;
   }
-
-}
-/* not mobile */
-@media (min-width: 680px) { 
-    .home p{ font-size: 70px;}
-   #guestBottom{
+  .pablo{
+    font-size: 302%;
+    padding-top: 20px;
+  }
+#guestBottom{
     display: none;
   }
-  
+}
+/* not mobile */
+@media (min-width: 720px) { 
+    .home p{ font-size: 70px;}
+   
+  #guestBottom{
+    display: none;
+  }
 }
 @media (max-width:720px){
   .the-couple #story .biohalf:first-child {

@@ -47,34 +47,44 @@ Slideshow = {
 RSVPanimation = {
 	slideup : function(){
     console.log("sliding up now");
-		$("#header").animate({top : "-="+ $("#rsvpForm").outerHeight() }, 500, function(){
-//      $("#header").animate({top : "-=110px" }, 500, function(){
-			   //reset form
-			   var newHTML = ' <form class="form-inline" role="form">\
-  <div class="form-group guestinquiry" ><h1>RSVP</h1>\
-     <div class="input-prepend">\
-      <span class="add-on"><i class="icon-envelope"></i></span>\
-      <input type="email" class="form-control" id="lookupemail" placeholder="Enter your email">\
+    if ($("#header").is(':visible')){
+  		$("#header").animate({top : "-="+ $("#rsvpForm").outerHeight() }, 500, function(){
+  //      $("#header").animate({top : "-=110px" }, 500, function(){
+  			   //reset form
+  			   var newHTML = ' <form class="form-inline" role="form">\
+    <div class="form-group guestinquiry" ><h1>RSVP</h1>\
+       <div class="input-prepend">\
+        <span class="add-on"><i class="icon-envelope"></i></span>\
+        <input type="email" class="form-control" id="lookupemail" placeholder="Enter your email">\
+      </div>\
+      <button id="lookupguestbtn" class="btn btn-default">Look up</button>\
     </div>\
-    <button id="lookupguestbtn" class="btn btn-default">Look up</button>\
-  </div>\
-</form>\
-<div id="closebtn" class="close">&times;</div>';
+  </form>\
+  <div id="closebtn" class="close">&times;</div>';
 
-			$("#rsvpForm").attr("status", "closed");
-			$("#rsvpForm").html(newHTML);
-			$("#closebtn").on('click', RSVPanimation.toggleSlide);
-			$("#header").animate({top : - $("#rsvpForm").outerHeight()});
-    	$("#lookupguestbtn").on('click', function(e) {
-	        guestLookUp(e);
-       });
-	});
+  			$("#rsvpForm").attr("status", "closed");
+  			$("#rsvpForm").html(newHTML);
+  			$("#closebtn").on('click', RSVPanimation.toggleSlide);
+  			$("#header").animate({top : - $("#rsvpForm").outerHeight()});
+      	$("#lookupguestbtn").on('click', function(e) {
+  	        guestLookUp(e);
+         });
+  	 })
+    }
+    else{
+      $("#guestBottom").slideUp();
+    }
+    ;
 	},
 	slidedown : function(){
     console.log("slide down");
-		$("#rsvpForm").attr("status", "open");
-		$("#header").animate({top : 0}, 500);
-		//$(".guestinquiry").slideDown();
+    if ($("#header").is(':visible')){
+  		$("#rsvpForm").attr("status", "open");
+  		$("#header").animate({top : 0}, 500);
+    }
+    else{
+		  $("#guestBottom").slideDown();
+    }
 	},
 	toggleSlide : function(){
     console.log("toggle slide");

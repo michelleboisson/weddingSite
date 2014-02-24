@@ -180,20 +180,20 @@ saveThisRSVP = function(e){
  Session.set("currentguest", Guests.findOne({email: Session.get("currentguest").email }));
  var currentguest = Session.get("currentguest");
   if (currentguest.answerme == "1" && currentguest.plusone == ""){
-      var response = "Sweet! See you on April 26!";
+      var response = "Sweet! See you on Saturday April 26 at 7:30pm!";
       var htmlEmail = Template[ 'GuestComing' ]();
       var htmlGreeting = currentguest.firstname+", Glad you can make it!";
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "1"){
-      var response = "Sweet! See you both on April 26!";
+      var response = "Sweet! See you both on Saturday April 26 at 7:30pm!";
       var htmlEmail = Template[ 'GuestComing' ]();
       var htmlGreeting = currentguest.firstname+", Glad you can make it!";
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "0" && currentguest.plusone != ""){
     if(currentguest.plusone == "your plus one")
-      var response = "We're glad you can make it! See you on April 26!"; 
+      var response = "We're glad you can make it! See you on Saturday April 26 at 7:30pm!"; 
     else 
-      var response = "We'll miss "+ thisguest.plusone +", but we're glad you can make it!";
+      var response = "We'll miss "+ thisguest.plusone +", but we're glad you can make it. See you on Saturday April 26 at 7:30pm!";
     var htmlEmail = Template[ 'GuestComing' ]();
     var htmlGreeting = currentguest.firstname+", Glad you can make it!";
     console.log("true 3");
