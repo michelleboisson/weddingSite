@@ -181,35 +181,46 @@ saveThisRSVP = function(e){
  var currentguest = Session.get("currentguest");
   if (currentguest.answerme == "1" && currentguest.plusone == ""){
       var response = "Sweet! See you on April 26!";
-      console.log("true 1");
+      var htmlEmail = Template[ 'GuestComing' ]();
+      var htmlGreeting = currentguest.firstname+" , Glad you can make it!";
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "1"){
       var response = "Sweet! See you both on April 26!";
-      console.log("true 2");
+      var htmlEmail = Template[ 'GuestComing' ]();
+      var htmlGreeting = currentguest.firstname+" , Glad you can make it!";
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "0" && currentguest.plusone != ""){
-    if(currentguest.plusone == "plus one")
+    if(currentguest.plusone == "your plus one")
       var response = "We're glad you can make it! See you on April 26!"; 
     else 
       var response = "We'll miss "+ thisguest.plusone +", but we're glad you can make it!";
-    
+    var htmlEmail = Template[ 'GuestComing' ]();
+    var htmlGreeting = currentguest.firstname+" , Glad you can make it!";
     console.log("true 3");
   }
-  if (currentguest.answerme == "0" && currentguest.answerplus1 == "0"){
+  if (currentguest.answerme == "0" ){
     console.log("true 4");
       var response = "Bummer!";
+      var htmlEmail = Template[ 'GuestNotComing' ]();
+      var htmlGreeting = currentguest.firstname+" , Sorry you can't make it.";
   }
   // update text on page
   $(".guestinquiry").html(response);
   $(".guestinquiry").css("text-align","center");
 
   //send email
+
+    //set up emails
+
+  console.log(htmlEmail);
+  var toEmails = currentguest.email+',anisahandmichelle@gmail.com';
+
   console.log("sending email");
   Meteor.call('sendEmail',
-            'michelle.boisson@gmail.com',
+            toEmails,
             'anisahandmichelle@gmail.com',
-            'Hello from Meteor!',
-            'This is a test of Email.send.');
+            ''+htmlGreeting+'',
+            ''+htmlEmail+'');
 
 
 }//end SaveThisRSVP
@@ -347,7 +358,7 @@ if (Meteor.isServer) {
           to: to,
           from: from,
           subject: subject,
-          text: text
+          html: text
         });
       }
     });
