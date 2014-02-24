@@ -182,12 +182,12 @@ saveThisRSVP = function(e){
   if (currentguest.answerme == "1" && currentguest.plusone == ""){
       var response = "Sweet! See you on April 26!";
       var htmlEmail = Template[ 'GuestComing' ]();
-      var htmlGreeting = currentguest.firstname+" , Glad you can make it!";
+      var htmlGreeting = currentguest.firstname+", Glad you can make it!";
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "1"){
       var response = "Sweet! See you both on April 26!";
       var htmlEmail = Template[ 'GuestComing' ]();
-      var htmlGreeting = currentguest.firstname+" , Glad you can make it!";
+      var htmlGreeting = currentguest.firstname+", Glad you can make it!";
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "0" && currentguest.plusone != ""){
     if(currentguest.plusone == "your plus one")
@@ -195,14 +195,14 @@ saveThisRSVP = function(e){
     else 
       var response = "We'll miss "+ thisguest.plusone +", but we're glad you can make it!";
     var htmlEmail = Template[ 'GuestComing' ]();
-    var htmlGreeting = currentguest.firstname+" , Glad you can make it!";
+    var htmlGreeting = currentguest.firstname+", Glad you can make it!";
     console.log("true 3");
   }
   if (currentguest.answerme == "0" ){
     console.log("true 4");
       var response = "Bummer!";
       var htmlEmail = Template[ 'GuestNotComing' ]();
-      var htmlGreeting = currentguest.firstname+" , Sorry you can't make it.";
+      var htmlGreeting = currentguest.firstname+", Sorry you can't make it.";
   }
   // update text on page
   $(".guestinquiry").html(response);
