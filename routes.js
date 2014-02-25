@@ -60,6 +60,11 @@ Router.map(function () {
       
      }
    });
+this.route('savethedate', {
+     layoutTemplate: 'layout',
+     path: '/savethedate',
+     template: 'savethedate',
+   });
 
  this.route('email', {
      path: '/email',
