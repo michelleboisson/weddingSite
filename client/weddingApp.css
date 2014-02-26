@@ -379,6 +379,12 @@ img#hearts{
   padding-bottom: 10px;
 }
 
+.registered {
+  color: green;
+}
+.notregistered{
+  color: inherit;
+}
 
 .btn-default{color:#333;background-color:#eee;border-color:transparent; text-shadow: none;}
 .btn-default:hover,.btn-default:focus,.btn-default:active,.btn-default.active,.open .dropdown-toggle.btn-default{color:#333;background-color:#e8e8e8;border-color:rgba(0,0,0,0)}

@@ -237,6 +237,13 @@ Template.guestCount.rsvps = function(){
 
   return rsvpcount;
 }
+Template.guestCount.didntRSVP = function(){
+  var didntRSVP ={};
+  didntRSVP.guests= Guest.find({timestamp: {$lt: 1393210464830}});
+  didntRSVP.count= Guest.find({timestamp: {$lt: 1393210464830}}).count();
+
+  return didntRSVP;
+}
 
   Template.addnewGuest.rendered = function(){
     console.log("add guest template rendered");
@@ -275,8 +282,17 @@ Template.guestEmails.allemails = function(){
     //timestampes moment
      $(".timestamp").each(function(index, element ){
       var time = parseFloat($(element).attr("data-time"));
-      //console.log(index+" "+time+" "+moment(time).fromNow());
+      
+      //if the timestamp is after launch, they edited their response
+      if (time >= 1393210464830){
+        $(element).parent("tr").addClass("registered");
+      }else{
+        $(element).parent("tr").addClass("notregistered");
+      }
+
+      //change the display 
       $(element).text( moment(time).fromNow() );
+
      })
   };
 
