@@ -234,7 +234,15 @@ Template.home.rendered = function(){
 Template.guestCount.rsvps = function(){
   var count = 0;
   var rsvpcount = Guests.find({answerme: "1"}).count() + Guests.find({answerplus1: "1"}).count() +" / "+ (Guests.find({}).count() + Guests.find({plusone: {$ne:""}}).count());
-   return rsvpcount;
+  
+  return rsvpcount;
+}
+Template.guestCount.didntRSVP = function(){
+  var didntRSVP ={};
+  didntRSVP.guests= Guest.find({timestamp: {$lt: 1393210464830}});
+  didntRSVP.count= Guest.find({timestamp: {$lt: 1393210464830}}).count();
+
+  return didntRSVP;
 }
 Template.guestCount.didntRSVP = function(){
   var didntRSVP ={};
