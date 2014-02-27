@@ -244,13 +244,6 @@ Template.guestCount.didntRSVP = function(){
 
   return didntRSVP;
 }
-Template.guestCount.didntRSVP = function(){
-  var didntRSVP ={};
-  didntRSVP.guests= Guest.find({timestamp: {$lt: 1393210464830}});
-  didntRSVP.count= Guest.find({timestamp: {$lt: 1393210464830}}).count();
-
-  return didntRSVP;
-}
 
   Template.addnewGuest.rendered = function(){
     console.log("add guest template rendered");
