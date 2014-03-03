@@ -47,7 +47,6 @@ Slideshow = {
 RSVPanimation = {
 	slideup : function(){
     console.log("sliding up now");
-    if ($("#header").is(':visible')){
   		$("#header").animate({top : "-="+ $("#rsvpForm").outerHeight() }, 500, function(){
   //      $("#header").animate({top : "-=110px" }, 500, function(){
   			   //reset form
@@ -70,29 +69,46 @@ RSVPanimation = {
   	        guestLookUp(e);
          });
   	 })
-    }
-    else{
-      $("#guestBottom").slideUp();
-    }
-    ;
+
 	},
 	slidedown : function(){
     console.log("slide down");
-    if ($("#header").is(':visible')){
   		$("#rsvpForm").attr("status", "open");
   		$("#header").animate({top : 0}, 500);
-    }
-    else{
 		  $("#guestBottom").slideDown();
-    }
+
 	},
+  slideupMobile : function(){
+    console.log("slideupMobile");
+    $("#guestBottom").slideUp();
+    $("#guestBottom").attr('data-status', 'closed');
+  },
+  slidedownMobile : function(){
+    console.log("slidedownMobile");
+    $("#guestBottom").slideDown();
+    $("#guestBottom").attr('data-status', 'open');
+  },
 	toggleSlide : function(){
     console.log("toggle slide");
-		if ($("#rsvpForm").attr("status") == "open"){
-			RSVPanimation.slideup();
+    if ($("#header").is(':visible')){
+  		if ($("#rsvpForm").attr("status") == "open"){
+  			RSVPanimation.slideup();
+      }
+  		else{
+  			RSVPanimation.slidedown();
+      }
     }
-		else{
-			RSVPanimation.slidedown();
+    else{
+      //header is not showing, its mobile
+      if($("#guestBottom").is(':visible')){
+        if ($("#guestBottom").attr('data-status') == "open")
+          RSVPanimation.slideupMobile();
+      }
+      else{
+        RSVPanimation.slidedownMobile();
+      }
+
+
     }
 	}
 }
