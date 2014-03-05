@@ -75,8 +75,6 @@ RSVPanimation = {
     console.log("slide down");
   		$("#rsvpForm").attr("status", "open");
   		$("#header").animate({top : 0}, 500);
-		  $("#guestBottom").slideDown();
-
 	},
   slideupMobile : function(){
     console.log("slideupMobile");
