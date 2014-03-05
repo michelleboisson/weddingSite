@@ -412,7 +412,11 @@ img#hearts{
   }
 
 }
-
+@media (max-width: 1200px) and (min-width: 720px){
+  #header #main-nav {
+    zoom: 0.66;
+  }
+}
 /* Landscape phone to portrait tablet */
 @media (max-width: 720px) { 
   #header {

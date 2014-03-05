@@ -187,7 +187,7 @@ saveThisRSVP = function(e){
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "1"){
       var response = "Sweet! See you both on Saturday April 26 at 7:30pm!";
       var htmlEmail = Template[ 'GuestComing' ]();
-      var htmlGreeting = currentguest.firstname+", Glad you can make it!";
+      var htmlGreeting = currentguest.firstname+" and "+currentguest.plusone+", Glad you can make it!";
   }
   if (currentguest.answerme == "1" && currentguest.answerplus1 == "0" && currentguest.plusone != ""){
     if(currentguest.plusone == "your plus one")
