@@ -319,7 +319,7 @@ Template.guestEmails.allemails = function(){
   })
   Template.guestLookUp.rendered = function(){
     console.log("rsvp template rendered");
-    $("#rsvpForm").css('padding-left', $("#main-nav").offset().left  +'px');
+    //$("#rsvpForm").css('padding-left', $(".navbar").offset().left  +'px');
     //$("#rsvpForm form").css("position", "relative");
     //$("#rsvpForm form").css("left", $("#main-nav").offset().left);
   }

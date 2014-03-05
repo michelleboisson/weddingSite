@@ -126,6 +126,7 @@ letsGetRolling = function(){
 	console.log("ready to roll");
 	//$('#rsvplink').on('click', RSVPanimation.toggleSlide);
 	$('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
+  $("#rsvpForm").css('padding-left', $(".navbar").offset().left  +'px');
 	Slideshow.init();
 	var s = skrollr.init({
     render: function(data) {

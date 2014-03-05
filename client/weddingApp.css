@@ -93,15 +93,12 @@ table#adminpanel tr:first-child{
 }
 #main-nav{
 	margin: 0 auto;
-	width: 1032px;
+	
   height: 65px;
-  margin-left: -506px;
 	text-align: center;
-	position: relative;
-	top: 0;
-  left: 50%;
   z-index: 100;
   background: inherit;
+  padding-bottom: 15px;
 }
 #main-nav h1{
   font-family: "Pablo", Helvetica, sans-serif;
@@ -111,6 +108,7 @@ table#adminpanel tr:first-child{
 }
 .navbar {
   margin-bottom: 0px!important;
+  display: inline-block;
 }
 .navbar .nav > li {
   line-height: 65px;
