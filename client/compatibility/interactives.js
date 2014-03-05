@@ -87,7 +87,7 @@ RSVPanimation = {
     }
 	},
 	toggleSlide : function(){
-    console.log("toggle slide");
+    console.log("toggle slide --- add if #header is visible");
 		if ($("#rsvpForm").attr("status") == "open"){
 			RSVPanimation.slideup();
     }
