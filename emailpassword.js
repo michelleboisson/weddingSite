@@ -1,0 +1,2 @@
+EMAILDOMAIN = "sandbox24137";
+EMAILPASSWORD = "25lmp9pkd828";

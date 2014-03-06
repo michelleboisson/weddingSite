@@ -232,9 +232,23 @@ Template.home.rendered = function(){
  }
   
 Template.guestCount.rsvps = function(){
-  var count = 0;
-  var rsvpcount = Guests.find({answerme: "1"}).count() + Guests.find({answerplus1: "1"}).count() +" / "+ (Guests.find({}).count() + Guests.find({plusone: {$ne:""}}).count());
+  var countcoming, counttotal = 0;
+  //add guests coming
+  countcoming = Guests.find({answerme: "1"}).count()+ Guests.find({answerplus1: "1"}).count(); 
+  counttotal = (Guests.find({}).count() + Guests.find({plusone: {$ne:""}}).count());
+  // add the girls
+  countcoming++;
+  counttotal++;
   
+  //add donovan and dimitri
+  counttotal+=2;
+  //countcoming += 2;
+  
+  //add little rudy to gabby
+  counttotal++;
+  //countcoming++;
+  var rsvpcount = countcoming +" / "+ counttotal;
+
   return rsvpcount;
 }
 Template.guestCount.didntRSVP = function(){
@@ -362,6 +376,8 @@ Template.guestEmails.allemails = function(){
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+
+    process.env.MAIL_URL = 'smtp://postmaster%40'+EMAILDOMAIN+'.mailgun.org:'+EMAILPASSWORD+'@smtp.mailgun.org:587';
     Meteor.methods({
       sendEmail: function (to, from, subject, text) {
         check([to, from, subject, text], [String]);
@@ -380,6 +396,8 @@ if (Meteor.isServer) {
     });
 
   });
+
+
 }
 //end .isServer
 
