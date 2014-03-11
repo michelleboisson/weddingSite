@@ -75,6 +75,7 @@ RSVPanimation = {
     console.log("slide down");
   		$("#rsvpForm").attr("status", "open");
   		$("#header").animate({top : 0}, 500);
+       $("#rsvpForm").css('padding-left', $(".navbar").offset().left  +'px');
 	},
   slideupMobile : function(){
     console.log("slideupMobile");
@@ -126,7 +127,7 @@ letsGetRolling = function(){
 	console.log("ready to roll");
 	//$('#rsvplink').on('click', RSVPanimation.toggleSlide);
 	$('#RSVPbtn').on('click', RSVPanimation.toggleSlide);
-  $("#rsvpForm").css('padding-left', $(".navbar").offset().left  +'px');
+ 
 	Slideshow.init();
 	var s = skrollr.init({
     render: function(data) {
@@ -143,6 +144,8 @@ letsGetRolling = function(){
 	
 	//////$("#parallelogram").css('top', $("#brides-people").offset().top);
 	$("#parallelogram").css('height', $("#brides-people").height() + 100);
+
+   $("#rsvpForm").css('padding-left', $(".navbar").offset().left  +'px');
 
 	//$("#RSVPbtn").on('click', RSVPanimation.toggleSlide);
 	//$("#closebtn").on('click', RSVPanimation.slideup);

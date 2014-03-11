@@ -61,9 +61,10 @@ a {
 }
 #closebtn {
   position: absolute;
-  right: 200px;
-  top: 30px;
+  left: 0px;
+  top: 0px;
   padding: 10px;
+  zoom:200%;
 }
 #rsvpForm h3{
   margin-top: -8px;
