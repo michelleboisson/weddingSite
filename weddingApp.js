@@ -1,5 +1,5 @@
 Guests = new Meteor.Collection('guests');
-
+SENT_INVITATION = 1393210464830;
 
 if (Meteor.isClient) {
 
@@ -200,7 +200,7 @@ saveThisRSVP = function(e){
   }
   if (currentguest.answerme == "0" ){
     console.log("true 4");
-      var response = "Bummer!";
+      var response = "Bummer! Sorry you can't make it.";
       var htmlEmail = Template[ 'GuestNotComing' ]();
       var htmlGreeting = currentguest.firstname+", Sorry you can't make it.";
   }
@@ -298,7 +298,7 @@ Template.guestEmails.allemails = function(){
       var time = parseFloat($(element).attr("data-time"));
       
       //if the timestamp is after launch, they edited their response
-      if (time >= 1393210464830){
+      if (time >= SENT_INVITATION){
         $(element).parent("tr").addClass("registered");
       }else{
         $(element).parent("tr").addClass("notregistered");
@@ -368,8 +368,47 @@ Template.guestEmails.allemails = function(){
         $("#answerplus1").attr('value', 'YES');
     }
   })
+  Template.sendEmailEmails.noresponse = function(){
+    var noResponseEmails = Guests.find({timestamp:{$lt: SENT_INVITATION}});
+    return noResponseEmails;
+  }
+
+Template.sendemail.events({
+  'click #sendEmailButton' : function(event){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      console.log( $("#sendEmailTo").val()+", "+
+            $("#sendEmailFrom").val()+", "+
+            $("#sendEmailSubject").val()+", "+
+            $("#sendEmailMessage").val());
+
+      Meteor.call('sendEmail',
+           $("#sendEmailTo").val(),
+            $("#sendEmailFrom").val(),
+            $("#sendEmailSubject").val(),
+            $("#sendEmailMessage").val());
+
+  },
+  'click #getGuestsNoResponse' : function(event){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      //console.log(noResponseEmails);
+      
+      //var emails = Meteor.render(function () {
+        
+        //return 
+
+      //})
+      $("#sendEmailTo").text(Template[ 'sendEmailEmails' ]())
+
+  }
+})
+
+
 
 }
+
+
 //end .isClient
 
 

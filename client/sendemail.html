@@ -1,0 +1,61 @@
+ <template name="sendemail">
+
+<div class="container-fluid" style="margin-top:30px;">
+  <div class="row-fluid">
+
+<form class="form-horizontal">
+  <h1 class="controls">Send an Email</h1>
+  <div class="control-group">
+    <label class="control-label" for="sendEmailFrom">From:</label>
+    <div class="controls">
+      <input type="text" id="sendEmailFrom" placeholder="send from...">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="sendEmailTo">To:</label>
+    <div class="controls">
+      <textarea rows="4" cols="100" id="sendEmailTo" placeholder="send to... seperate by comma ,">
+        {{> sendEmailEmails}}
+      </textarea>
+      {{> sendEmailEmails}}
+      <div class="btn-toolbar">
+  <div class="btn-group">
+    <a class="btn" id="getAllGuests">all</a>
+    <a class="btn" id="getGuestsComing">coming</a>
+    <a class="btn" id="getGuestsNotComing">responded & not coming</i></a>
+    <a class="btn" id="getGuestsNoResponse">not responded</a>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="sendEmailSubject">Subject:</label>
+    <div class="controls">
+      <input type="text" id="sendEmailSubject" placeholder="email subject">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="sendEmailMessage">Message</label>
+    <div class="controls">
+      <textarea class="input-xxlarge" rows="30" cols="700" id="sendEmailMessage" placeholder="yes html"></textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" id="sendEmailButton" class="btn">Send Email</button>
+    </div>
+  </div>
+</form>
+
+
+  </div>
+</div>
+</template>
+
+
+<template name="sendEmailEmails">
+  hey
+{{#each noresponse}}
+  {{email}}, 
+{{/each}}
+</template>

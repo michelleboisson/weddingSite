@@ -71,4 +71,9 @@ this.route('savethedate', {
      template: 'email',
    });
 
+ this.route('sendemail', {
+     path: '/sendemail',
+     template: 'sendemail',
+   });
+
  });
