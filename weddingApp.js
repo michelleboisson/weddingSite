@@ -216,7 +216,7 @@ saveThisRSVP = function(e){
   var toEmails = currentguest.email+',anisahandmichelle@gmail.com';
 
   console.log("sending email");
-  Meteor.call('sendEmail',
+  Meteor.call('sendReceiptEmail',
             toEmails,
             'anisahandmichelle@gmail.com',
             ''+htmlGreeting+'',
@@ -368,11 +368,23 @@ Template.guestEmails.allemails = function(){
         $("#answerplus1").attr('value', 'YES');
     }
   })
-  Template.sendEmailEmails.noresponse = function(){
+  Template.sendEmailNoResponse.noresponse = function(){
     var noResponseEmails = Guests.find({timestamp:{$lt: SENT_INVITATION}});
     return noResponseEmails;
   }
-
+Template.sendEmailAll.all = function(){
+    var all = Guests.find({});
+    return all;
+  }
+  Template.sendEmailComing.all = function(){
+    //responded and coming
+    var all = Guests.find({timestamp:{$gt: SENT_INVITATION}, answerme: "1"});
+    return all;
+  }
+  Template.sendEmailNotComing.all = function(){
+    var all = Guests.find({timestamp:{$gt: SENT_INVITATION}, answerme: "0"});
+    return all;
+  }
 Template.sendemail.events({
   'click #sendEmailButton' : function(event){
       event.preventDefault();
@@ -382,7 +394,7 @@ Template.sendemail.events({
             $("#sendEmailSubject").val()+", "+
             $("#sendEmailMessage").val());
 
-      Meteor.call('sendEmail',
+      Meteor.call('sendMassEmail',
            $("#sendEmailTo").val(),
             $("#sendEmailFrom").val(),
             $("#sendEmailSubject").val(),
@@ -392,14 +404,25 @@ Template.sendemail.events({
   'click #getGuestsNoResponse' : function(event){
       event.preventDefault();
       event.stopImmediatePropagation();
-      //console.log(noResponseEmails);
-      
-      //var emails = Meteor.render(function () {
-        
-        //return 
+      $("#sendEmailTo").text(Template[ 'sendEmailNoResponse' ]())
 
-      //})
-      $("#sendEmailTo").text(Template[ 'sendEmailEmails' ]())
+  },
+  'click #getAllGuests' : function(event){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      $("#sendEmailTo").text(Template[ 'sendEmailAll' ]())
+
+  },
+  'click #getGuestsNotComing' : function(event){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      $("#sendEmailTo").text(Template[ 'sendEmailNotComing' ]())
+
+  },
+  'click #getGuestsComing' : function(event){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      $("#sendEmailTo").text(Template[ 'sendEmailComing' ]())
 
   }
 })
@@ -418,7 +441,7 @@ if (Meteor.isServer) {
 
     process.env.MAIL_URL = 'smtp://postmaster%40'+EMAILDOMAIN+'.mailgun.org:'+EMAILPASSWORD+'@smtp.mailgun.org:587';
     Meteor.methods({
-      sendEmail: function (to, from, subject, text) {
+      sendReceiptEmail: function (to, from, subject, text) {
         check([to, from, subject, text], [String]);
 
         // Let other method calls from the same client start running,
@@ -431,11 +454,24 @@ if (Meteor.isServer) {
           subject: subject,
           html: text
         });
+      },
+        sendMassEmail: function (to, from, subject, text) {
+        check([to, from, subject, text], [String]);
+
+        // Let other method calls from the same client start running,
+        // without waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+          to: 'anisahandmichelle@gmail.com',
+          bcc: to,
+          from: from,
+          subject: subject,
+          html: text
+        });
       }
     });
-
-  });
-
+    });//end Meteor.startup
 
 }
 //end .isServer

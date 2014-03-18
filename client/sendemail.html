@@ -4,7 +4,7 @@
   <div class="row-fluid">
 
 <form class="form-horizontal">
-  <h1 class="controls">Send an Email</h1>
+  <h1 class="controls">Send a Mass Email</h1>
   <div class="control-group">
     <label class="control-label" for="sendEmailFrom">From:</label>
     <div class="controls">
@@ -12,12 +12,18 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="sendEmailTo">To:</label>
+    <label class="control-label" for="sendEmailFrom">To:</label>
+    <div class="controls">
+      <input type="text" id="sendEmailFrom" placeholder="" disabled value="anisahandmichelle@gmail.com">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="sendEmailTo">BCC:</label>
     <div class="controls">
       <textarea rows="4" cols="100" id="sendEmailTo" placeholder="send to... seperate by comma ,">
-        {{> sendEmailEmails}}
+        
       </textarea>
-      {{> sendEmailEmails}}
+      
       <div class="btn-toolbar">
   <div class="btn-group">
     <a class="btn" id="getAllGuests">all</a>
@@ -53,9 +59,15 @@
 </template>
 
 
-<template name="sendEmailEmails">
-  hey
-{{#each noresponse}}
-  {{email}}, 
-{{/each}}
+<template name="sendEmailNoResponse">
+{{#each noresponse}}{{email}}, {{/each}}
+</template>
+<template name="sendEmailAll">
+{{#each all}}{{email}}, {{/each}}
+</template>
+<template name="sendEmailComing">
+{{#each all}}{{email}}, {{/each}}
+</template>
+<template name="sendEmailNotComing">
+{{#each all}}{{email}}, {{/each}}
 </template>
