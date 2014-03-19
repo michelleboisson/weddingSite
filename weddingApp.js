@@ -464,6 +464,7 @@ if (Meteor.isServer) {
 
         Email.send({
           to: 'anisahandmichelle@gmail.com',
+          replyTo: 'anisahandmichelle@gmail.com',
           bcc: to,
           from: from,
           subject: subject,
