@@ -242,7 +242,7 @@ Template.guestCount.rsvps = function(){
   
   //add donovan and dimitri
   counttotal+=2;
-  //countcoming += 2;
+  countcoming += 2;
   
   //add little rudy to gabby
   counttotal++;
