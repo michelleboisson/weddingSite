@@ -245,8 +245,8 @@ Template.guestCount.rsvps = function(){
   countcoming += 2;
   
   //add little rudy to gabby
-  counttotal++;
-  countcoming++;
+  //counttotal++;
+  //countcoming++;
   var rsvpcount = countcoming +" / "+ counttotal;
 
   return rsvpcount;
